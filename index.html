@@ -179,14 +179,24 @@
             background: var(--card);
         }
 
+        .check, .no {
+            font-weight: 800;
+            font-size: 15px;
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            line-height: 1.2;
+        }
+
+        /* Strong, consistent colors */
         .check {
-            color: #22c55e; /* stronger green */
-            font-weight: 700;
+            color: #16a34a !important;
+            background: rgba(34, 197, 94, 0.12);
         }
 
         .no {
-            color: #ef4444; /* stronger red */
-            font-weight: 700;
+            color: #dc2626 !important;
+            background: rgba(239, 68, 68, 0.12);
         }
 
         /* MORE FEATURES */
@@ -259,14 +269,6 @@
             .check, .no {
                 text-shadow: none;
                 -webkit-font-smoothing: antialiased;
-            }
-
-            .check {
-                color: #16a34a;
-            }
-
-            .no {
-                color: #dc2626;
             }
 
             /* pricing → stack */
