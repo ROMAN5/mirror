@@ -3,117 +3,1053 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mirror Trading Manager</title>
-
+    <title>Anton Nel Mirror Trading Manager Copier</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.antonnel.net/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.antonnel.net/favicon-32x32.png">
+    <meta name="description" content="Super-fast copy-trading software">
+    <meta property="og:description" content="Super-fast copy-trading software">
+    <meta property="og:title" content="Anton Nel Mirror Trading Manager Copier">
+    <meta property="og:url" content="https://antonnel.net/mirror/">
+    <meta property="og:image" content="https://antonnel.net/mirror//seo_card.jpg">
+    <script src="trackdesk.js"></script>
+    <script src="trackdeskpayment.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #0b0f1a;
+            --card: #121a2b;
+            --text: #eaeaea;
+            --muted: #9aa0ad;
+            --accent: #4da3ff;
+            --border: #1f2a44;
+        }
+
+        body.light {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #111;
+            --muted: #555;
+            --border: #ddd;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #111827, #1f2937);
-            color: white;
-            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: 0.3s;
+        }
+
+        /* TOP */
+        .topbar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 18px 20px;
+        }
+
+        /* THEME */
+        .theme-switch {
+            width: 70px;
+            height: 36px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            padding: 4px;
+            cursor: pointer;
+        }
+
+        .theme-thumb {
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            color: white;
+            transition: 0.3s;
         }
 
-        .container {
+        body.light .theme-thumb {
+            transform: translateX(34px);
+            background: #ffb020;
+        }
+
+        /* HERO */
+        .hero {
             text-align: center;
-            padding: 40px;
-            max-width: 700px;
+            padding: 50px 20px;
         }
 
-        h1 {
-            font-size: 42px;
-            margin-bottom: 18px;
-            letter-spacing: 1px;
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                max-width: 700px;
+                margin: 10px auto 0;
+                color: var(--muted);
+            }
+
+        /* SWITCH */
+        .switcher {
+            text-align: center;
+            margin: 30px;
         }
 
-        p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #d1d5db;
+            .switcher button {
+                margin: 5px;
+                padding: 10px 14px;
+                border-radius: 20px;
+                border: 1px solid var(--border);
+                background: transparent;
+                color: var(--text);
+                cursor: pointer;
+            }
+
+                .switcher button.active {
+                    background: var(--accent);
+                    color: white;
+                }
+
+        /* PRICING */
+        .pricing {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
         }
 
-        a {
-            color: #60a5fa;
-            font-weight: bold;
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
         }
 
-        .coming {
-            margin-top: 30px;
+        .price {
+            font-size: 24px;
+            color: var(--accent);
+        }
+
+        .btn {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: var(--accent);
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
             display: inline-block;
-            padding: 12px 24px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.12);
+            text-decoration: none;
+            text-align: center;
+        }
+
+        /* TABLE */
+        .table-wrap {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        th, td {
+            border: 1px solid var(--border);
+            padding: 10px;
+            text-align: center;
             font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #f3f4f6;
         }
 
-        .contact {
-            margin-top: 28px;
-            font-size: 16px;
-            color: #d1d5db;
+        th {
+            background: var(--card);
         }
 
-        .footer {
-            margin-top: 35px;
-            font-size: 13px;
-            color: #9ca3af;
+        .check {
+            color: #4ade80;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 32px;
+        .no {
+            color: #f87171;
+        }
+
+        /* MORE FEATURES */
+        .hidden {
+            display: none;
+        }
+
+        /* FAQ */
+        .faq {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .faq-item {
+            background: var(--card);
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 10px;
+            color: var(--muted);
+        }
+
+        /* TESTIMONIALS LOOP */
+        .testimonials-wrapper {
+            overflow: hidden;
+            max-width: 1100px;
+            margin: 60px auto;
+        }
+
+        .testimonials {
+            display: flex;
+            gap: 15px;
+            width: max-content;
+            animation: scrollLoop 60s linear infinite;
+        }
+
+        .testimonials-wrapper:hover .testimonials {
+            animation-play-state: paused;
+        }
+
+        .testimonial {
+            min-width: 300px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        @keyframes scrollLoop {
+            0% {
+                transform: translateX(0);
             }
 
-            p {
-                font-size: 16px;
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* =========================
+           MOBILE OPTIMIZATION PATCH
+           ========================= */
+
+        @media (max-width: 900px) {
+
+            /* pricing → stack */
+            .pricing {
+                grid-template-columns: 1fr;
             }
 
-            .container {
-                padding: 25px;
+            /* make buttons easier to tap */
+            .switcher button {
+                width: 48%;
+                margin: 5px 1%;
             }
 
-            .contact {
-                font-size: 15px;
+            /* testimonials smaller cards */
+            .testimonial {
+                min-width: 240px;
+            }
+
+            /* hero text scale */
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            /* table scroll smoother */
+            .table-wrap {
+                padding: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .theme-switch {
+                width: 60px;
+                height: 32px;
+            }
+
+            .theme-thumb {
+                width: 24px;
+                height: 24px;
+            }
+
+            .btn {
+                width: 100%;
             }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="container">
+    <!-- TOP -->
+    <div class="topbar">
+        <div class="theme-switch" onclick="toggleTheme()">
+            <div class="theme-thumb" id="thumb">🌙</div>
+        </div>
+    </div>
 
+    <!-- HERO -->
+    <div class="hero">
         <h1>Mirror Trading Manager</h1>
+        <p>Super-fast copy trading system with execution control, risk protection, and multi-account synchronization.</p>
+    </div>
 
-        <p>
-            We are currently building our new website.<br>
-            A fresh and improved experience will be released soon.
-        </p>
+    <!-- SWITCH -->
+    <div class="switcher">
+        <button class="active" onclick="setPlan('monthly', this)">Monthly</button>
+        <button onclick="setPlan('6m', this)">6 Months</button>
+        <button onclick="setPlan('yearly', this)">Yearly</button>
+        <button onclick="setPlan('lifetime', this)">Lifetime</button>
+    </div>
 
-        <div class="coming">
-            Coming Soon
+    <!-- PRICING -->
+    <div class="pricing">
+
+        <div class="card">
+            <h3>Free</h3>
+            <div class="price">€0</div>
         </div>
 
-        <div class="contact">
-            For subscription enquiries, contact me directly: <a href="https://antonnel.net" target="_blank">antonnel.net</a>
+        <div class="card">
+            <h3>Basic</h3>
+            <div class="price" id="basicPrice">€29</div>
+            <button class="btn">Subscribe</button>
         </div>
 
-        <div class="footer">
-            © 2021-2026 Anton Nel. All rights reserved.
+        <div class="card" style="position:relative; overflow:hidden;">
+            <div style="
+                position:absolute;
+                top:18px;
+                right:-55px;
+                transform:rotate(45deg);
+                background:var(--accent);
+                color:#fff;
+                padding:8px 60px;
+                font-size:11px;
+                font-weight:bold;
+                text-align:center;
+                line-height:1.2;
+                white-space:nowrap;
+            ">
+                MOST<br>POPULAR
+            </div>
+            <h3>Standard</h3>
+            <div class="price" id="standardPrice">€79</div>
+            <button class="btn">Subscribe</button>
+        </div>
+
+        <div class="card">
+            <h3>Pro</h3>
+            <div class="price" id="proPrice">€179</div>
+            <button class="btn">Subscribe</button>
         </div>
 
     </div>
+
+    <!-- MAIN TABLE -->
+    <div class="table-wrap">
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Free</th>
+                <th>Basic</th>
+                <th>Standard</th>
+                <th>Pro</th>
+            </tr>
+
+            <tr>
+                <td>Master Accounts</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+            </tr>
+
+            <tr>
+                <td>Follower Accounts</td>
+                <td>1</td>
+                <td>Up to 10</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+            </tr>
+
+            <tr>
+                <td>Application instance per machine</td>
+                <td>1</td>
+                <td>1</td>
+                <td>5</td>
+                <td>32</td>
+            </tr>
+
+            <tr>
+                <td>Machines per license key</td>
+                <td>-</td>
+                <td>1</td>
+                <td>2</td>
+                <td>5</td>
+            </tr>
+
+            <tr>
+                <td>Master Speed Loop</td>
+                <td>Per Second</td>
+                <td>10x faster</td>
+                <td>100x faster</td>
+                <td>1000x faster</td>
+            </tr>
+
+            <tr>
+                <td>Master Engine Type</td>
+                <td>Std</td>
+                <td>Std</td>
+                <td>Std</td>
+                <td>Super HFT</td>
+            </tr>
+
+            <tr>
+                <td>Copy TP and SL</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+
+            <tr>
+                <td>Reverse Trading</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Local Web Portal</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Telegram Notifications</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Support (5 Working days/week)</td>
+                <td class="check">Support - Max. 1 Hour only</td>
+                <td class="check">Support - Low priority</td>
+                <td class="check">Support - Medium priority</td>
+                <td class="check">Support - High priority</td>
+            </tr>
+
+        </table>
+    </div>
+
+
+
+    <!-- MORE FEATURES BUTTON (RESTORED) -->
+    <div style="text-align:center; margin:20px;">
+        <button class="btn" onclick="toggleAdvanced()">More Features</button>
+    </div>
+
+    <!-- ADVANCED TABLE (RESTORED) -->
+    <div class="table-wrap hidden" id="advancedFeatures">
+
+        <table>
+            <tr>
+                <th>Feature</th>
+                <th>Free</th>
+                <th>Basic</th>
+                <th>Standard</th>
+                <th>Pro</th>
+            </tr>
+
+
+
+
+            <tr>
+                <td>News Filter</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Copy Order Comment</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Equity Protector</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Target DD/TP - Close All Trades</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Pending Orders</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Manual 'New Order' Button</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Protection: Maximum Number of Open Positions</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Protection: Maximum Number of Open Positions Per Symbol</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Copy Pre-Existing Orders</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Advanced Repeat Open Orders</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Trading Filters/Conditions</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Custom Lot Size per Symbol</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Custom TP/SL per Symbol</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Hidden TP/SL per Symbol</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Auto Save Accounts To JSON File Live</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Export History Trades</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>FileDrop Integration</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>Webhooks Integration</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+            </tr>
+
+            <tr>
+                <td>REST API Access</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="no">✖</td>
+                <td class="check">✔</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="hero">
+        <p>Please note that all transactions are final and non-refundabl.</p>
+        <p>Your satisfaction and trust are our top priorities.</p>
+    </div>
+
+    <!-- DOWNLOADS -->
+    <div class="faq">
+
+        <h2 style="text-align:center;">Download Mirror Trading Manager</h2>
+
+        <div style="
+            background:var(--card);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:25px;
+            line-height:1.9;
+        ">
+
+            <div style="text-align:center; color:var(--muted); margin-bottom:20px;">
+
+                <svg viewBox="0 0 2499.6 2500"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="currentColor"
+                     style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">
+
+                    <path d="M1187.9 1187.9H0V0h1187.9zM2499.6 1187.9h-1188V0h1187.9v1187.9zM1187.9 2500H0V1312.1h1187.9zM2499.6 2500h-1188V1312.1h1187.9V2500z"></path>
+
+                </svg>
+
+                <span>Windows 64bit</span>
+
+                <span style="color:var(--muted);">
+                    &nbsp; | &nbsp;
+                </span>
+
+                <span>.NET 10.0.8+</span>
+
+                <span style="color:var(--muted);">
+                    &nbsp; | &nbsp;
+                </span>
+
+                <span>Latest Version 5.4.0.1 (19 May 2026)</span>
+
+            </div>
+
+            <div style="
+                display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+                gap:12px;
+                margin-bottom:25px;
+            ">
+
+                <a class="btn"
+                   href="https://mirror-trading-manager.b-cdn.net/Free/Mirror5%20-%20Free%20Version%20Setup.exe">
+                    Free Version
+                </a>
+
+                <a class="btn"
+                   href="https://mirror-trading-manager.b-cdn.net/Basic/Mirror5%20-%20Basic%20Version%20Setup.exe">
+                    Basic Version
+                </a>
+
+                <a class="btn"
+                   href="https://mirror-trading-manager.b-cdn.net/Standard/Mirror5%20-%20Standard%20Version%20Setup.exe">
+                    Standard Version
+                </a>
+
+                <a class="btn"
+                   href="https://mirror-trading-manager.b-cdn.net/Pro/Mirror5%20-%20Pro%20Version%20Setup.exe">
+                    Pro Version
+                </a>
+
+            </div>
+
+            <p>
+                <strong>Free Version</strong> - Max 1 master and 1 follower.
+            </p>
+
+            <p style="color:#f5b041;">
+                <strong>Notice:</strong> The Lite Version was discontinued on
+                31 December 2025. Users are encouraged to switch to the
+                Free Version or the Basic Version.
+            </p>
+
+            <div style="
+                margin-top:20px;
+                padding:15px;
+                border:1px solid var(--border);
+                border-radius:10px;
+                background:rgba(255,255,255,0.02);
+            ">
+
+                <a class="btn"
+                   href="https://mirror-trading-manager.b-cdn.net/Preloads/InstallDotNet10.exe">
+                    .NET 10.0.8
+                </a>
+
+                <p style="color:var(--muted);">
+                    Unlock the full potential of mirror trading management
+                    by downloading our comprehensive guide. This detailed PDF
+                    provides step-by-step instructions for easy configuration
+                    and effective use, ensuring you make the most of our
+                    advanced mirror trading manager.
+                </p>
+
+                <a class="btn"
+                   href="https://mirror-trading-manager.b-cdn.net/Mirror%20Trading%20Manager%20General%20Guide.pdf">
+                    General Guide (PDF)
+                </a>
+
+            </div>
+
+            <div style="text-align: center; color: var(--muted); margin-top: 10px; margin-bottom: 20px; ">
+
+                <span>Previous Versions 5.3.2.4 (13 Apr 2026)</span>
+
+                <div style="
+                    display:grid;
+                    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+                    gap:12px;
+                ">
+
+                    <a class="btn"
+                       href="https://mirror-trading-manager.b-cdn.net/Previous%20Versions/v5.3.2.4/Mirror5%20-%20Free%20Version%20Setup.exe">
+                        Free (old)
+                    </a>
+
+                    <a class="btn"
+                       href="https://mirror-trading-manager.b-cdn.net/Previous%20Versions/v5.3.2.4/Mirror5%20-%20Basic%20Version%20Setup.exe">
+                        Basic (old)
+                    </a>
+
+                    <a class="btn"
+                       href="https://mirror-trading-manager.b-cdn.net/Previous%20Versions/v5.3.2.4/Mirror5%20-%20Standard%20Version%20Setup.exe">
+                        Standard (old)
+                    </a>
+
+                    <a class="btn"
+                       href="https://mirror-trading-manager.b-cdn.net/Previous%20Versions/v5.3.2.4/Mirror5%20-%20Pro%20Version%20Setup.exe">
+                        Pro (old)
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- WHAT TRADERS SAY -->
+    <div class="testimonials-wrapper">
+
+        <h2 style="text-align:center; margin-bottom:20px;">
+            What Traders Say
+        </h2>
+
+        <div class="testimonials">
+
+            <div class="testimonial">“The Trade copier is one of the best I have ever had. It is easy and simple to use. It is constantly being improved and there is direct contact with the programmer. You also get help with problems. The price is also unbeatable for what the copier can do. Absolutely recommendable. Reallly good work.” ~ Kevin Glaubitt</div>
+            <div class="testimonial">“I am thrilled to share my outstanding experience with Anton's Mirror Trading Manager. The robustness and user-friendliness of the software are unmatched, complemented beautifully by an intuitive and elegant UI. Navigating through the various features feels seamless, always up to date with features and improvements. What sets Mirror apart, even more, is the extraordinary customer support, response time is quite fast Anton really care on support by solving any doubts regarding the use and control of the Mirror. In my journey through various Copy trading software, Anton's Trading Manager emerges as the unequivocal leader so far nothing beats it, in my opinion. If you're still in search of a reliable, easy-to-use, and exceptional Forex copy trading software, look no further than Anton's Mirror Trading Manager is the right one for you!” ~ Mark Escartin</div>
+            <div class="testimonial">“I love how it simplifies the copy process, so you don't need to have a complex setup involving multiple VPS and terminals. Just one application can manage a lot of accounts. A huge time saver. The developer is also super responsive, and quick to make updates and fixes. Thanks Anton!” ~ Lisa Forex</div>
+            <div class="testimonial">“Testing the free mode, and I can already see with the tool and especially with SUPPORT, it is very fast. Congratulations and may it continue like this, as no one will regret the product.” ~ Leonardo Alvim</div>
+            <div class="testimonial">“I recently had the pleasure of using Mirror Trade Copier, and I must say it is one of the finest trade copiers I have ever encountered. This tool stands out in the crowded field of trading solutions, delivering exceptional performance and reliability. The level of customization available with Mirror Trade Copier is commendable. Users can tailor the copier to their specific needs, adjusting parameters such as lot size, risk management settings, and trade filters. This flexibility allows traders to align the copier with their unique trading strategies, enhancing overall performance and profitability. Overall, Mirror Trade Copier is a top-notch trade copying solution that truly lives up to its reputation. Its seamless integration, remarkable accuracy, customizable features, and reliable performance make it an invaluable tool for traders seeking to enhance their trading experience. I highly recommend Mirror Trade Copier to anyone looking for a dependable and efficient trade copying solution.” ~ Willand Montemayor</div>
+            <div class="testimonial">“After a short free license test I purchased the program, and I can say that it works very well, any problem was solved in less than 24 hours, seriousness and professionalism never seen before. I recommend 100%.” ~ Johnny</div>
+
+
+        </div>
+    </div>
+
+
+    <!-- AFFILIATES -->
+    <div class="faq">
+
+        <h2 style="text-align:center; margin-bottom:20px;">
+            Affiliates
+        </h2>
+
+
+        <div style="
+            background:var(--card);
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:40px 25px;
+            text-align:center;
+        ">
+
+            <p style="
+                color:var(--muted);
+                max-width:700px;
+                margin:0 auto 35px auto;
+            ">
+                Earn 7% commission when someone buys a Mirror license.
+            </p>
+
+            <div style="
+                display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+                gap:15px;
+                max-width:700px;
+                margin:0 auto;
+            ">
+
+                <a class="btn"
+                   href="https://mirror.trackdesk.com/sign-up"
+                   target="_blank">
+                    Sign Up
+                </a>
+
+                <a class="btn"
+                   href="https://mirror.trackdesk.com/dashboard"
+                   target="_blank">
+                    Login Dashboard
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FAQ -->
+    <div class="faq">
+
+        <h2 style="text-align:center;">FAQ</h2>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            What is this system?
+            <div class="faq-answer">A high-performance trade copying and execution platform.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            Do I need VPS or VDS?
+            <div class="faq-answer">Recommended for lowest latency performance.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            What is the difference between VDS and VPS?
+            <div class="faq-answer">While VPS solutions are common, they share computing power with other users, which can lead to performance fluctuations. A VDS gives you dedicated computing power, ensuring consistent stability and predictable performance—making it the professional choice for serious traders.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            Which VPS is best?
+            <div class="faq-answer">I recommend FXVDS as a VDS provider: See https://www.fxvds.com They offer 30% off for the first 3 months with the code ANTONNEL30. Note: I do not receive any commission from FXVDS.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            Is it real-time?
+            <div class="faq-answer">Yes, near real-time depending on broker speed.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            What are the OS minimum requirements?
+            <div class="faq-answer">
+                Windows Server 2016+ / Windows 10 / Windows 11
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            What are the minimum hardware requirements?
+            <div class="faq-answer">
+                4GB RAM+ and a dual-core CPU or better is required; a 4-core CPU is preferred over dual-core.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            Where to find broker IP address?
+            <div class="faq-answer">
+                There is a button: "Auto Detect IP Address", see PDF guide for more info.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            How do I configure each account to use a different IP address?
+            <div class="faq-answer">
+                Use proxy services (Standard and Pro versions only).
+                See the
+                <a href="https://mirror-trading-manager.b-cdn.net/Mirror%20Trading%20Manager%20Proxy%20Guide.pdf"
+                   target="_blank"
+                   style="color:var(--accent);">
+                    PDF guide
+                </a>
+                for more information.
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            Can it copy the target price and stop loss?
+            <div class="faq-answer">Yes</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            How fast to complete 200 logins?
+            <div class="faq-answer">
+                Under 60 seconds (avg. ping was 175ms). One of the clients reported 30 seconds (his avg. ping was 70ms)
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            How fast to copy 200 trades from master to 8 followers?
+            <div class="faq-answer">
+                Under 50 seconds (depending on ping and broker server execution speed).
+            </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            Is REST API included?
+            <div class="faq-answer">Yes. Only in Pro plan.</div>
+        </div>
+
+    </div>
+
+    <script>
+
+        const plans = {
+            monthly: {
+                basic: { price: 29, url: "https://buy.stripe.com/bIYg3203g9GsfgQ3cA" },
+                standard: { price: 79, url: "https://buy.stripe.com/cN2cQQ03g8Co9Ww4gI" },
+                pro: { price: 179, url: "https://buy.stripe.com/00geYYg2e9Gs1q0dR5" }
+            },
+
+            "6m": {
+                basic: { price: 145, url: "https://buy.stripe.com/28o5oog2e2e0gkU00n" },
+                standard: { price: 395, url: "https://buy.stripe.com/28o3gg7vI4m86KkcNg" },
+                pro: { price: 895, url: "https://buy.stripe.com/8wM0447vI6ugfgQ7sG" }
+            },
+
+            yearly: {
+                basic: { price: 290, url: "https://buy.stripe.com/4gwbMM03gdWI7OobJ3" },
+                standard: { price: 790, url: "https://buy.stripe.com/3cs6ss7vIg4Q4CcaF7" },
+                pro: { price: 1799, url: "https://buy.stripe.com/5kA04417kg4QgkUeV7" }
+            },
+
+            lifetime: {
+                basic: { price: 799, url: "https://buy.stripe.com/14kdUU2bog4Q6KkfZi" },
+                standard: { price: 1999, url: "https://buy.stripe.com/dR604403gdWI8Ss28x" },
+                pro: { price: 4999, url: "https://buy.stripe.com/aEU6sseYadWI7OofZa" }
+            }
+        };
+
+        function openCheckout(type) {
+            window.open(plans[currentPlan][type].url, "_blank");
+        }
+
+        /* PRICE SWITCH */
+        let currentPlan = "monthly";
+
+        function setPlan(p, btn) {
+
+            currentPlan = p;
+
+            const prices = {
+                monthly: { basic: 29, standard: 79, pro: 179 },
+                "6m": { basic: 145, standard: 395, pro: 895 },
+                yearly: { basic: 290, standard: 790, pro: 1799 },
+                lifetime: { basic: 799, standard: 1999, pro: 4999 }
+            };
+
+            basicPrice.innerText = "€" + prices[p].basic;
+            standardPrice.innerText = "€" + prices[p].standard;
+            proPrice.innerText = "€" + prices[p].pro;
+
+            /* highlight FIX */
+            document.querySelectorAll(".switcher button")
+                .forEach(b => b.classList.remove("active"));
+
+            if (btn) btn.classList.add("active");
+        }
+
+        /* TOGGLE ADVANCED */
+        function toggleAdvanced() {
+            document.getElementById("advancedFeatures").classList.toggle("hidden");
+        }
+
+        /* THEME */
+        function toggleTheme() {
+            document.body.classList.toggle("light");
+            document.getElementById("thumb").innerText =
+                document.body.classList.contains("light") ? "☀️" : "🌙";
+        }
+
+        /* FAQ */
+        function toggleFAQ(el) {
+            const a = el.querySelector(".faq-answer");
+            a.style.display = a.style.display === "block" ? "none" : "block";
+        }
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const cards = document.querySelectorAll(".pricing .card");
+
+            // Free = index 0 (no button)
+            const basicBtn = cards[1].querySelector("button");
+            const standardBtn = cards[2].querySelector("button");
+            const proBtn = cards[3].querySelector("button");
+
+            basicBtn.onclick = () => openCheckout("basic");
+            standardBtn.onclick = () => openCheckout("standard");
+            proBtn.onclick = () => openCheckout("pro");
+        });
+
+    </script>
 
 </body>
 </html>
