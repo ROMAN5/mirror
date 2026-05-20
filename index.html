@@ -156,15 +156,21 @@
 
         /* TABLE */
         /* FORCE ADVANCED TABLE TO MATCH MAIN TABLE */
-        #advancedFeatures table {
-            font-size: 14px !important;
-            line-height: 1.4;
-        }
-
+        /* FORCE ADVANCED TABLE TO MATCH MAIN TABLE */
+        #advancedFeatures table,
         #advancedFeatures th,
         #advancedFeatures td {
             font-size: 14px !important;
-            line-height: 1.4;
+            line-height: 1.4 !important;
+            font-family: Arial, sans-serif;
+            font-weight: normal;
+        }
+
+        /* keep structure identical to main table */
+        #advancedFeatures table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
         }
 
         .table-wrap {
