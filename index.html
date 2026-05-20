@@ -172,7 +172,7 @@
             border: 1px solid var(--border);
             padding: 10px;
             text-align: center;
-            font-size: 12px;
+            font-size: 14px;
         }
 
         th {
@@ -189,7 +189,7 @@
             #advancedFeatures th,
             #advancedFeatures td {
                 padding: 6px 5px;
-                font-size: 12px;
+                font-size: 14px;
                 line-height: 1.2;
             }
 
@@ -1095,7 +1095,6 @@
             standardPrice.innerText = "€" + prices[p].standard;
             proPrice.innerText = "€" + prices[p].pro;
 
-            /* highlight FIX */
             document.querySelectorAll(".switcher button")
                 .forEach(b => b.classList.remove("active"));
 
@@ -1108,10 +1107,26 @@
         }
 
         /* THEME */
+        function applyTheme(theme) {
+
+            if (theme === "light") {
+                document.body.classList.add("light");
+                document.getElementById("thumb").innerText = "☀️";
+            } else {
+                document.body.classList.remove("light");
+                document.getElementById("thumb").innerText = "🌙";
+            }
+        }
+
         function toggleTheme() {
-            document.body.classList.toggle("light");
-            document.getElementById("thumb").innerText =
-                document.body.classList.contains("light") ? "☀️" : "🌙";
+
+            const isLight = document.body.classList.toggle("light");
+
+            const theme = isLight ? "light" : "dark";
+
+            localStorage.setItem("theme", theme);
+
+            applyTheme(theme);
         }
 
         /* FAQ */
@@ -1120,12 +1135,14 @@
             a.style.display = a.style.display === "block" ? "none" : "block";
         }
 
-
         document.addEventListener("DOMContentLoaded", () => {
+
+            /* LOAD SAVED THEME */
+            const savedTheme = localStorage.getItem("theme") || "dark";
+            applyTheme(savedTheme);
 
             const cards = document.querySelectorAll(".pricing .card");
 
-            // Free = index 0 (no button)
             const basicBtn = cards[1].querySelector("button");
             const standardBtn = cards[2].querySelector("button");
             const proBtn = cards[3].querySelector("button");
