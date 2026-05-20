@@ -179,25 +179,6 @@
             background: var(--card);
         }
 
-        .check, .no {
-            font-weight: 800;
-            font-size: 15px;
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 6px;
-            line-height: 1.2;
-        }
-
-        /* Strong, consistent colors */
-        .check {
-            color: #16a34a !important;
-            background: rgba(34, 197, 94, 0.12);
-        }
-
-        .no {
-            color: #dc2626 !important;
-            background: rgba(239, 68, 68, 0.12);
-        }
 
         /* MORE FEATURES */
         .hidden {
@@ -261,14 +242,59 @@
             }
         }
 
+        .check {
+            color: #22c55e;
+        }
+
+        .no {
+            color: #ef4444;
+        }
+
+        .icon-check,
+        .icon-no {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+        }
+
+        /* GREEN CHECK */
+        .icon-check {
+            color: #16a34a;
+        }
+
+            .icon-check::before {
+                content: "";
+                width: 18px;
+                height: 18px;
+                display: block;
+                background: no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+            }
+
+        /* RED CROSS */
+        .icon-no {
+            color: #dc2626;
+        }
+
+            .icon-no::before {
+                content: "";
+                width: 18px;
+                height: 18px;
+                display: block;
+                background: no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dc2626' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6L6 18M6 6l12 12'/%3E%3C/svg%3E");
+            }
+
         /* =========================
            MOBILE OPTIMIZATION PATCH
            ========================= */
 
         @media (max-width: 900px) {
-            .check, .no {
-                text-shadow: none;
-                -webkit-font-smoothing: antialiased;
+            .icon-check::before,
+            .icon-no::before {
+                width: 16px;
+                height: 16px;
             }
 
             /* pricing → stack */
@@ -451,35 +477,35 @@
 
             <tr>
                 <td>Copy TP and SL</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
 
             <tr>
                 <td>Reverse Trading</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Local Web Portal</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Telegram Notifications</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
@@ -517,154 +543,154 @@
 
             <tr>
                 <td>News Filter</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Copy Order Comment</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Equity Protector</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Target DD/TP - Close All Trades</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Pending Orders</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Manual 'New Order' Button</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Protection: Maximum Number of Open Positions</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Protection: Maximum Number of Open Positions Per Symbol</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Copy Pre-Existing Orders</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Advanced Repeat Open Orders</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Trading Filters/Conditions</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Custom Lot Size per Symbol</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Custom TP/SL per Symbol</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Hidden TP/SL per Symbol</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Auto Save Accounts To JSON File Live</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Export History Trades</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>FileDrop Integration</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>Webhooks Integration</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
             <tr>
                 <td>REST API Access</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="no">✖</td>
-                <td class="check">✔</td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-no"></span></td>
+                <td><span class="icon-check"></span></td>
             </tr>
 
         </table>
