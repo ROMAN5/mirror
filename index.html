@@ -393,6 +393,155 @@
                 width: 100%;
             }
         }
+		
+		/* ============================
+		   EDITION THEMES
+		   ============================ */
+
+		/* FREE */
+		.edition-free {
+			--edition-main: #6B7280;
+			--edition-light: #8B92A0;
+			--edition-bg: rgba(107,114,128,0.15);
+		}
+
+		.edition-free .price,
+		.edition-free h3 {
+			color: var(--edition-light);
+		}
+
+
+		/* BASIC - Emerald */
+		.edition-basic {
+			--edition-main: #10B981;
+			--edition-light: #34D399;
+			--edition-bg: rgba(16,185,129,0.15);
+		}
+
+		.edition-basic .price,
+		.edition-basic h3 {
+			color: var(--edition-light);
+		}
+
+
+		/* STANDARD - Royal Blue */
+		.edition-standard {
+			--edition-main: #2563EB;
+			--edition-light: #60A5FA;
+			--edition-bg: rgba(37,99,235,0.15);
+		}
+
+		.edition-standard .price,
+		.edition-standard h3 {
+			color: var(--edition-light);
+		}
+
+
+		/* PRO - Gold */
+		.edition-pro {
+			--edition-main: #FFD700;
+			--edition-light: #FFB000;
+			--edition-bg: rgba(255,215,0,0.15);
+		}
+
+		.edition-pro .price,
+		.edition-pro h3 {
+			color: var(--edition-light);
+		}
+
+
+
+		/* CARD STYLE */
+		.card.edition-free,
+		.card.edition-basic,
+		.card.edition-standard,
+		.card.edition-pro {
+
+			border: 2px solid var(--edition-main);
+			background:
+				linear-gradient(
+					135deg,
+					var(--edition-bg),
+					var(--card)
+				);
+
+			box-shadow:
+				0 0 15px var(--edition-bg);
+
+			transition: .3s;
+		}
+
+
+		.card.edition-free:hover,
+		.card.edition-basic:hover,
+		.card.edition-standard:hover,
+		.card.edition-pro:hover {
+
+			transform: translateY(-5px);
+
+			box-shadow:
+				0 0 25px var(--edition-main);
+		}
+
+
+
+		/* BUTTONS */
+		.card.edition-free .btn,
+		.card.edition-basic .btn,
+		.card.edition-standard .btn,
+		.card.edition-pro .btn {
+
+			background: var(--edition-main);
+			color:#000;
+			font-weight:bold;
+		}
+
+
+
+		/* TABLE HEADERS */
+
+		th.edition-free {
+			background:
+				linear-gradient(
+					135deg,
+					#6B7280,
+					#8B92A0
+				);
+			color:white;
+		}
+
+
+		th.edition-basic {
+			background:
+				linear-gradient(
+					135deg,
+					#059669,
+					#34D399
+				);
+			color:white;
+		}
+
+
+		th.edition-standard {
+			background:
+				linear-gradient(
+					135deg,
+					#1D4ED8,
+					#60A5FA
+				);
+			color:white;
+		}
+
+
+		th.edition-pro {
+			background:
+				linear-gradient(
+					135deg,
+					#FFB000,
+					#FFF2A6
+				);
+			color:#111;
+		}
     </style>
 </head>
 
@@ -422,18 +571,18 @@
     <!-- PRICING -->
     <div class="pricing">
 
-        <div class="card">
+        <div class="card edition-free">
             <h3>Free</h3>
             <div class="price">€0</div>
         </div>
 
-        <div class="card">
+        <div class="card edition-basic">
             <h3>Basic</h3>
             <div class="price" id="basicPrice">€29</div>
             <button class="btn">Subscribe</button>
         </div>
 
-        <div class="card" style="position:relative; overflow:hidden;">
+        <div class="card edition-standard" style="position:relative; overflow:hidden;">
             <div style="
                 position:absolute;
                 top:18px;
@@ -455,7 +604,7 @@
             <button class="btn">Subscribe</button>
         </div>
 
-        <div class="card">
+        <div class="card edition-pro">
             <h3>Pro</h3>
             <div class="price" id="proPrice">€179</div>
             <button class="btn">Subscribe</button>
@@ -467,12 +616,12 @@
     <div class="table-wrap">
         <table>
             <tr>
-                <th>Feature</th>
-                <th>Free</th>
-                <th>Basic</th>
-                <th>Standard</th>
-                <th>Pro</th>
-            </tr>
+				<th>Feature</th>
+				<th class="edition-free">Free</th>
+				<th class="edition-basic">Basic</th>
+				<th class="edition-standard">Standard</th>
+				<th class="edition-pro">Pro</th>
+			</tr>
 
             <tr>
                 <td>Master Accounts</td>
