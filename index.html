@@ -542,6 +542,117 @@
 				);
 			color:#111;
 		}
+		
+		/* ============================
+		   EDITION DOWNLOAD BUTTONS
+		   ============================ */
+
+		.btn.edition-free,
+		.btn.edition-basic,
+		.btn.edition-standard,
+		.btn.edition-pro {
+
+			font-weight: bold;
+			border: 1px solid transparent;
+			transition: .25s;
+		}
+
+
+		/* FREE */
+		.btn.edition-free {
+			background: #6B7280;
+			border-color: #8B92A0;
+			color: white;
+		}
+
+		.btn.edition-free:hover {
+			background: #8B92A0;
+		}
+
+
+		/* BASIC */
+		.btn.edition-basic {
+			background: #10B981;
+			border-color: #34D399;
+			color: white;
+		}
+
+		.btn.edition-basic:hover {
+			background: #34D399;
+		}
+
+
+		/* STANDARD */
+		.btn.edition-standard {
+			background: #2563EB;
+			border-color: #60A5FA;
+			color: white;
+		}
+
+		.btn.edition-standard:hover {
+			background: #60A5FA;
+		}
+
+
+		/* PRO */
+		.btn.edition-pro {
+			background: #FFD700;
+			border-color: #FFF2A6;
+			color: #111;
+		}
+
+		.btn.edition-pro:hover {
+			background: #FFF2A6;
+		}
+		
+		/* ============================
+		   TABLE EDITION COLUMNS
+		   ============================ */
+
+		.col-free {
+			background: rgba(107,114,128,0.08);
+		}
+
+		.col-basic {
+			background: rgba(16,185,129,0.08);
+		}
+
+		.col-standard {
+			background: rgba(37,99,235,0.08);
+		}
+
+		.col-pro {
+			background: rgba(255,215,0,0.08);
+		}
+
+
+		/* stronger hover effect */
+		table tr:hover td {
+			background: rgba(255,255,255,0.05);
+		}
+
+
+		/* keep feature column neutral */
+		table td:first-child {
+			background: var(--card);
+			font-weight: bold;
+		}
+		
+		.col-free {
+			box-shadow: inset 0 0 25px rgba(107,114,128,.15);
+		}
+
+		.col-basic {
+			box-shadow: inset 0 0 25px rgba(16,185,129,.15);
+		}
+
+		.col-standard {
+			box-shadow: inset 0 0 25px rgba(37,99,235,.15);
+		}
+
+		.col-pro {
+			box-shadow: inset 0 0 25px rgba(255,215,0,.15);
+		}
     </style>
 </head>
 
@@ -615,6 +726,14 @@
     <!-- MAIN TABLE -->
     <div class="table-wrap">
         <table>
+			 <colgroup>
+				<col>
+				<col class="col-free">
+				<col class="col-basic">
+				<col class="col-standard">
+				<col class="col-pro">
+			</colgroup>
+	
             <tr>
 				<th>Feature</th>
 				<th class="edition-free">Free</th>
@@ -733,15 +852,21 @@
     <div class="table-wrap hidden" id="advancedFeatures">
 
         <table>
+			<colgroup>
+				<col>
+				<col class="col-free">
+				<col class="col-basic">
+				<col class="col-standard">
+				<col class="col-pro">
+			</colgroup>
+			
             <tr>
-                <th>Feature</th>
-                <th>Free</th>
-                <th>Basic</th>
-                <th>Standard</th>
-                <th>Pro</th>
-            </tr>
-
-
+				<th>Feature</th>
+				<th class="edition-free">Free</th>
+				<th class="edition-basic">Basic</th>
+				<th class="edition-standard">Standard</th>
+				<th class="edition-pro">Pro</th>
+			</tr>
 
 
             <tr>
@@ -952,22 +1077,22 @@
                 margin-bottom:25px;
             ">
 
-                <a class="btn"
+                <a class="btn edition-free"
                    href="https://mirror-trading-manager.b-cdn.net/Free/Mirror5%20-%20Free%20Version%20Setup.exe">
                     Free Version
                 </a>
 
-                <a class="btn"
+                <a class="btn edition-basic"
                    href="https://mirror-trading-manager.b-cdn.net/Basic/Mirror5%20-%20Basic%20Version%20Setup.exe">
                     Basic Version
                 </a>
 
-                <a class="btn"
+                <a class="btn edition-standard"
                    href="https://mirror-trading-manager.b-cdn.net/Standard/Mirror5%20-%20Standard%20Version%20Setup.exe">
                     Standard Version
                 </a>
 
-                <a class="btn"
+                <a class="btn edition-pro"
                    href="https://mirror-trading-manager.b-cdn.net/Pro/Mirror5%20-%20Pro%20Version%20Setup.exe">
                     Pro Version
                 </a>
