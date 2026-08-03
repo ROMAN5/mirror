@@ -32,6 +32,124 @@
     <script src="trackdeskpayment.js"></script>
     <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
     <style>
+		/* ============================
+		   PREMIUM INTERACTIVE BACKGROUND
+		   ============================ */
+
+		body {
+			position: relative;
+			overflow-x: hidden;
+		}
+
+		/* Animated pattern layer */
+		body::before {
+			content: "";
+			position: fixed;
+			inset: 0;
+			z-index: -3;
+
+			background-image:
+				linear-gradient(
+					rgba(255,255,255,0.03) 1px,
+					transparent 1px
+				),
+				linear-gradient(
+					90deg,
+					rgba(255,255,255,0.03) 1px,
+					transparent 1px
+				);
+
+			background-size: 40px 40px;
+
+			animation: gridMove 25s linear infinite;
+		}
+
+
+		@keyframes gridMove {
+
+			from {
+				background-position: 0 0;
+			}
+
+			to {
+				background-position: 40px 40px;
+			}
+		}
+
+
+		/* Soft glowing background */
+		body::after {
+
+			content:"";
+
+			position: fixed;
+			width: 600px;
+			height:600px;
+
+			left: var(--mouse-x,50%);
+			top: var(--mouse-y,50%);
+
+			transform: translate(-50%,-50%);
+
+			background:
+				radial-gradient(
+					circle,
+					rgba(77,163,255,0.18),
+					transparent 65%
+				);
+
+			filter: blur(50px);
+
+			pointer-events:none;
+
+			z-index:-2;
+
+			transition:
+				left .15s ease,
+				top .15s ease;
+		}
+
+
+		/* Light mode adjustment */
+		body.light::before {
+
+			background-image:
+				linear-gradient(
+					rgba(0,0,0,0.04) 1px,
+					transparent 1px
+				),
+				linear-gradient(
+					90deg,
+					rgba(0,0,0,0.04) 1px,
+					transparent 1px
+				);
+
+		}
+
+
+		body.light::after {
+
+			background:
+				radial-gradient(
+					circle,
+					rgba(37,99,235,0.18),
+					transparent 65%
+				);
+
+		}
+
+
+		/* Add depth to sections */
+		.hero,
+		.card,
+		.table-wrap,
+		.faq-item,
+		.testimonial {
+
+			backdrop-filter: blur(10px);
+
+		}
+	
         :root {
             --bg: #0b0f1a;
             --card: #121a2b;
@@ -119,6 +237,16 @@
 
 		.navbar a:hover {
 			color: var(--accent);
+		}
+		
+		.navbar {
+
+			background:
+				rgba(18,26,43,0.75);
+
+			backdrop-filter:
+				blur(15px);
+
 		}
 
         /* HERO */
@@ -1547,6 +1675,23 @@
             proBtn.onclick = () => openCheckout("pro");
         });
 
+		/* ============================
+		   MOUSE LIGHT EFFECT
+		   ============================ */
+
+		document.addEventListener("mousemove", e => {
+
+			document.body.style.setProperty(
+				"--mouse-x",
+				e.clientX + "px"
+			);
+
+			document.body.style.setProperty(
+				"--mouse-y",
+				e.clientY + "px"
+			);
+
+		});
     </script>
 </body>
 </html>
