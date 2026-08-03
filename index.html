@@ -126,18 +126,14 @@
 
 		}
 
-
 		body.light::after {
-
 			background:
 				radial-gradient(
 					circle,
-					rgba(37,99,235,0.18),
+					rgba(37,99,235,0.10),
 					transparent 65%
 				);
-
 		}
-
 
 		/* Add depth to sections */
 		.hero,
@@ -169,10 +165,10 @@
 
         body.light {
             --bg: #f5f7fb;
-            --card: #ffffff;
-            --text: #111;
-            --muted: #555;
-            --border: #ddd;
+            --card: rgba(255,255,255,0.85);
+			--text: #111827;
+			--muted: #4b5563;
+			--border: #d1d5db;
         }
 
         body {
@@ -240,13 +236,11 @@
 		}
 		
 		.navbar {
-
-			background:
-				rgba(18,26,43,0.75);
-
-			backdrop-filter:
-				blur(15px);
-
+			background: color-mix(in srgb, var(--card) 75%, transparent);
+			backdrop-filter: blur(15px);
+		}
+		body.light .navbar {
+			background: rgba(255,255,255,0.75);
 		}
 
         /* HERO */
