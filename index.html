@@ -61,21 +61,8 @@
 
 			background-size: 40px 40px;
 
-			animation: gridMove 25s linear infinite;
+			background-position: var(--bg-x, 0px) var(--bg-y, 0px);
 		}
-
-
-		@keyframes gridMove {
-
-			from {
-				background-position: 0 0;
-			}
-
-			to {
-				background-position: 40px 40px;
-			}
-		}
-
 
 		/* Soft glowing background */
 		body::after {
@@ -217,28 +204,63 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			gap: 30px;
-			padding: 14px 20px;
-			background: var(--card);
+			gap: 20px;
+			padding: 12px 20px;
+			background: rgba(18,26,43,.75);
+            background: color-mix(in srgb, var(--card) 75%, transparent);
+			backdrop-filter: blur(15px);
 			border-bottom: 1px solid var(--border);
+			overscroll-behavior-x: contain;
 		}
 
 		.navbar a {
+		    flex-shrink:0;
 			color: var(--text);
 			text-decoration: none;
 			font-weight: bold;
 			font-size: 15px;
 			transition: 0.2s;
+			white-space: nowrap; /* Prevent menu items from wrapping text */
 		}
 
 		.navbar a:hover {
 			color: var(--accent);
 		}
 		
-		.navbar {
-			background: color-mix(in srgb, var(--card) 75%, transparent);
-			backdrop-filter: blur(15px);
+		.navbar a.active{
+			color:var(--accent);
 		}
+
+		/* MOBILE NAVBAR FIX */
+		@media (max-width: 900px) {
+			.navbar {
+				justify-content: flex-start;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				padding: 10px 15px;
+				gap: 16px;
+			}
+			.navbar::after{
+				content:"";
+				flex:0 0 15px;
+			}
+
+			/* Hide horizontal scrollbar while keeping functionality */
+			.navbar::-webkit-scrollbar {
+				display: none;
+			}
+			.navbar {
+				-ms-overflow-style: none;
+				scrollbar-width: none;
+			}
+
+			/* Keep theme switch pinned to the right */
+			.navbar .theme-switch {
+				margin-left: auto;
+				flex-shrink: 0;
+			}
+		}
+
 		body.light .navbar {
 			background: rgba(255,255,255,0.75);
 		}
@@ -1687,5 +1709,58 @@
 
 		});
     </script>
+	<script>
+		(function () {
+			let posX = 0;
+			let posY = 0;
+			let targetSpeedX = 0;
+			let targetSpeedY = 0;
+			let currentSpeedX = 0;
+			let currentSpeedY = 0;
+
+			// Track cursor position and calculate normalized direction vector from center
+			window.addEventListener('mousemove', (e) => {
+				const centerX = window.innerWidth / 2;
+				const centerY = window.innerHeight / 2;
+
+				// Values range from -1 to 1 depending on distance from center
+				const dirX = (e.clientX - centerX) / centerX;
+				const dirY = (e.clientY - centerY) / centerY;
+
+				// Maximum speed in pixels per frame (adjust 0.6 to change max speed)
+				const maxSpeed = 0.6; 
+
+				targetSpeedX = dirX * maxSpeed;
+				targetSpeedY = dirY * maxSpeed;
+
+				// Update mouse glow coordinates (retaining your existing feature)
+				document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+				document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+			});
+
+			// Continuous rendering loop
+			function updateBackground() {
+				// Smooth velocity easing for organic movement inertia
+				currentSpeedX += (targetSpeedX - currentSpeedX) * 0.05;
+				currentSpeedY += (targetSpeedY - currentSpeedY) * 0.05;
+
+				// Accumulate positions
+				posX += currentSpeedX;
+				posY += currentSpeedY;
+
+				// Keep numbers within pattern bounds (0-40px grid unit)
+				posX %= 40;
+				posY %= 40;
+
+				// Apply calculated offset to body pseudo-element
+				document.documentElement.style.setProperty('--bg-x', `${posX}px`);
+				document.documentElement.style.setProperty('--bg-y', `${posY}px`);
+
+				requestAnimationFrame(updateBackground);
+			}
+
+			requestAnimationFrame(updateBackground);
+		})();
+	</script>
 </body>
 </html>
